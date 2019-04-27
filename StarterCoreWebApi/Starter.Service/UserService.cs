@@ -6,8 +6,16 @@ using System.Text;
 
 namespace Starter.Service
 {
-    public class UsertService : IUserReposity
+    public class UserService : IUserReposity
     {
+        private IStudentRepository studentRepository;
+        private MyDbContext myDbContext;
+        public UserService(IStudentRepository studentRepository,MyDbContext myDbContext)
+        {
+            this.studentRepository = studentRepository;
+            this.myDbContext = myDbContext;
+        }
+
         public bool Delete(string entity)
         {
             throw new NotImplementedException();

@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28803.202
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Starter.Repository", "Starter.Repository\Starter.Repository.csproj", "{EAA6FB3D-5EE1-482B-943B-57218BC6F7BE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Starter.Repository", "Starter.Repository\Starter.Repository.csproj", "{EAA6FB3D-5EE1-482B-943B-57218BC6F7BE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Starter.Service", "Starter.Service\Starter.Service.csproj", "{CA737662-8EA8-46D2-A26A-54021F5CC153}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Starter.Service", "Starter.Service\Starter.Service.csproj", "{CA737662-8EA8-46D2-A26A-54021F5CC153}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Starter.Entity", "Starter.Entity\Starter.Entity.csproj", "{7703F281-5A8E-414A-A11F-BC9CDB269B48}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Starter.Entity", "Starter.Entity\Starter.Entity.csproj", "{7703F281-5A8E-414A-A11F-BC9CDB269B48}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Starter.WebApi", "Starter.WebApi\Starter.WebApi.csproj", "{3953BD8B-9873-4957-8084-EB614B4E964E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Starter.WebApi", "Starter.WebApi\Starter.WebApi.csproj", "{3953BD8B-9873-4957-8084-EB614B4E964E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Starter.DIExtension", "Starter.DIRepository\Starter.DIExtension.csproj", "{A86A2DE3-53EF-40CB-84C3-72DDE8C4EF26}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Starter.DIExtension", "Starter.DIRepository\Starter.DIExtension.csproj", "{A86A2DE3-53EF-40CB-84C3-72DDE8C4EF26}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XUnitTestProject", "XUnitTestProject\XUnitTestProject.csproj", "{F562B209-EBC8-477B-9467-7490D6732143}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{A86A2DE3-53EF-40CB-84C3-72DDE8C4EF26}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A86A2DE3-53EF-40CB-84C3-72DDE8C4EF26}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A86A2DE3-53EF-40CB-84C3-72DDE8C4EF26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F562B209-EBC8-477B-9467-7490D6732143}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F562B209-EBC8-477B-9467-7490D6732143}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F562B209-EBC8-477B-9467-7490D6732143}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F562B209-EBC8-477B-9467-7490D6732143}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
