@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Starter.Common\Starter.Common.csproj" />
     <ProjectReference Include="..\Starter.Entity\Starter.Entity.csproj" />
     <ProjectReference Include="..\Starter.Repository\Starter.Repository.csproj" />
   </ItemGroup>

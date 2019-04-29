@@ -7,14 +7,15 @@ namespace Starter.Service
 {
     public class Business
     {
-        private IUserReposity userReposity;
-        public Business(IUserReposity userReposity)
+        private IUserRepository userRepository;
+        public Business(IUserRepository userReposity)
         {
-            this.userReposity = userReposity;
+            this.userRepository = userRepository;
         }
 
-        public void GetValue() {
-            userReposity.Delete("dfdfd");
+        public void GetValue()
+        {
+            userRepository.Delete("dfdfd");
         }
     }
 }

@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Starter.WebApi", "Starter.W
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Starter.DIExtension", "Starter.DIRepository\Starter.DIExtension.csproj", "{A86A2DE3-53EF-40CB-84C3-72DDE8C4EF26}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XUnitTestProject", "XUnitTestProject\XUnitTestProject.csproj", "{F562B209-EBC8-477B-9467-7490D6732143}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XUnitTestProject", "XUnitTestProject\XUnitTestProject.csproj", "{F562B209-EBC8-477B-9467-7490D6732143}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Starter.Common", "Starter.Common\Starter.Common.csproj", "{D2413484-5607-4C19-AE8F-8F9D4C9E63ED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{F562B209-EBC8-477B-9467-7490D6732143}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F562B209-EBC8-477B-9467-7490D6732143}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F562B209-EBC8-477B-9467-7490D6732143}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2413484-5607-4C19-AE8F-8F9D4C9E63ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2413484-5607-4C19-AE8F-8F9D4C9E63ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2413484-5607-4C19-AE8F-8F9D4C9E63ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2413484-5607-4C19-AE8F-8F9D4C9E63ED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

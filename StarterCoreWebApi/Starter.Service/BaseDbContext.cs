@@ -6,10 +6,8 @@ using System.Text;
 
 namespace Starter.Service
 {
-    public class MyDbContext : DbContext
+    public class BaseDbContext : DbContext
     {
-        public MyDbContext(DbContextOptions<MyDbContext> options) : base(options) { }
-
         DbSet<User> Users { get; set; }
         DbSet<Books> Books { get; set; }
     }

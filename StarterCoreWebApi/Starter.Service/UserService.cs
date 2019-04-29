@@ -6,14 +6,14 @@ using System.Text;
 
 namespace Starter.Service
 {
-    public class UserService : IUserReposity
+    public class UserService : IUserRepository
     {
         private IStudentRepository studentRepository;
-        private MyDbContext myDbContext;
-        public UserService(IStudentRepository studentRepository,MyDbContext myDbContext)
+        private WriteDbContext writeDbContext;
+        public UserService(IStudentRepository studentRepository, WriteDbContext writeDbContext)
         {
             this.studentRepository = studentRepository;
-            this.myDbContext = myDbContext;
+            this.writeDbContext = writeDbContext;
         }
 
         public bool Delete(string entity)

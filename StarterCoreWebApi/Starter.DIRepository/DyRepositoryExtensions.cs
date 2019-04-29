@@ -24,17 +24,20 @@ namespace Microsoft.Extensions.DependencyInjection
                 Filter = (type) => type.IsInterface
             };
             setupOptions(options);
-            ScopeTemplateParser templateParser = new ScopeTemplateParser();
             var assembly = Assembly.Load(options.AssemblyRepositoryString);
+            var assembly2 = Assembly.Load("Starter.Service");
             var allTypes = assembly.GetTypes().Where(options.Filter);
-            foreach (var type in allTypes)
+            foreach (var t in allTypes)
             {
-                if (!type.Name.EndsWith("IRepository`2"))//过滤泛型接口
-                    builder.AddSingleton(type, sp =>
-                    {
-                        var factory = sp.GetRequiredService<IRepositoryFactory>();
-                        return factory.CreateInstance(type);
-                    });
+                if (!t.Name.EndsWith("IRepository`2"))//过滤泛型接口
+                    //builder.AddSingleton(t, sp =>
+                    //{
+                    //    ScopeTemplateParser templateParser = new ScopeTemplateParser();
+                    //    var scope = templateParser.Parse(t.Name);
+                    //    var type = assembly2.GetType($"Starter.Service.{scope}Service");
+                    //    return type;
+                    //});
+
             }
             return builder;
         }

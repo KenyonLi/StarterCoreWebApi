@@ -13,23 +13,23 @@ namespace Starter.WebApi.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        private readonly IUserReposity userReposity;
+        private readonly IUserRepository userReposity;
         private readonly IStudentRepository studentRepository;
         private readonly Business business;
-        private readonly MyDbContext myDbContext;
-        public UsersController(MyDbContext myDbContext, Business business, IUserReposity userReposity, IStudentRepository studentRepository)
+        private readonly WriteDbContext writeDbContext;
+        public UsersController(WriteDbContext writeDbContext, Business business, IUserRepository userReposity, IStudentRepository studentRepository)
         {
             this.userReposity = userReposity;
             this.studentRepository = studentRepository;
             this.business = business;
-            this.myDbContext = myDbContext;
+            this.writeDbContext = writeDbContext;
         }
 
         public string Get()
         {
             //business.GetValue();
 
-            var conn= myDbContext.Database.CanConnect();
+            var conn= writeDbContext.Database.CanConnect();
             return "Ok";
         }
     }
