@@ -29,14 +29,14 @@ namespace Microsoft.Extensions.DependencyInjection
             var allTypes = assembly.GetTypes().Where(options.Filter);
             foreach (var t in allTypes)
             {
-                if (!t.Name.EndsWith("IRepository`2"))//过滤泛型接口
-                    //builder.AddSingleton(t, sp =>
-                    //{
-                    //    ScopeTemplateParser templateParser = new ScopeTemplateParser();
-                    //    var scope = templateParser.Parse(t.Name);
-                    //    var type = assembly2.GetType($"Starter.Service.{scope}Service");
-                    //    return type;
-                    //});
+                //if (!t.Name.EndsWith("IRepository`2"))//过滤泛型接口
+                //    //builder.AddSingleton(t, sp =>
+                //    //{
+                //    //    ScopeTemplateParser templateParser = new ScopeTemplateParser();
+                //    //    var scope = templateParser.Parse(t.Name);
+                //    //    var type = assembly2.GetType($"Starter.Service.{scope}Service");
+                //    //    return type;
+                //    //});
 
             }
             return builder;

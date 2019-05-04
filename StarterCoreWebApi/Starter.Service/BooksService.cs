@@ -1,14 +1,15 @@
-﻿using System;
+﻿using Starter.Entity;
+using Starter.Repository;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using Starter.Entity;
 
-namespace Starter.Repository
+namespace Starter.Service
 {
     public class BooksService : IBooksRepository
     {
-        public BooksService( ) {
-
+        public BooksService()
+        {
         }
         public bool Delete(string entity)
         {

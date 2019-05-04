@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using static Starter.WebApi.DIAutofacSetting.CustomAutofacAop;
 
 namespace Starter.WebApi.Controllers
 {
@@ -10,14 +12,25 @@ namespace Starter.WebApi.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
+        private IA ia = null;
+        public ValuesController(IA ia)
+        {
+            this.ia = ia;
+        }
         // GET api/values
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
+            ia.Show(11, "dfdsf");
             return new string[] { "value1", "value2" };
         }
 
         // GET api/values/5
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id">id主键</param>
+        /// <returns></returns>
         [HttpGet("{id}")]
         public ActionResult<string> Get(int id)
         {

@@ -10,7 +10,7 @@ namespace Starter.Service
         private IUserRepository userRepository;
         public Business(IUserRepository userReposity)
         {
-            this.userRepository = userRepository;
+            this.userRepository = userReposity;
         }
 
         public void GetValue()

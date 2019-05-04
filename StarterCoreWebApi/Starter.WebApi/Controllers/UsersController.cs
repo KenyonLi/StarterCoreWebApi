@@ -9,7 +9,7 @@ using Starter.Service;
 
 namespace Starter.WebApi.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class UsersController : ControllerBase
     {
@@ -17,20 +17,28 @@ namespace Starter.WebApi.Controllers
         private readonly IStudentRepository studentRepository;
         private readonly Business business;
         private readonly WriteDbContext writeDbContext;
-        public UsersController(WriteDbContext writeDbContext, Business business, IUserRepository userReposity, IStudentRepository studentRepository)
+        private IBooksRepository booksRepository { get; }
+        public UsersController(
+            WriteDbContext writeDbContext,
+            Business business,
+            IUserRepository userReposity,
+            IStudentRepository studentRepository,
+            IBooksRepository booksRepository
+            )
         {
             this.userReposity = userReposity;
             this.studentRepository = studentRepository;
             this.business = business;
             this.writeDbContext = writeDbContext;
+            this.booksRepository = booksRepository;
         }
-
-        public string Get()
+        [HttpGet]
+        public IActionResult Get()
         {
             //business.GetValue();
-
-            var conn= writeDbContext.Database.CanConnect();
-            return "Ok";
+            //booksRepository.Delete("strin");
+            var conn = writeDbContext.Database.CanConnect();
+            return Ok();
         }
     }
 }
