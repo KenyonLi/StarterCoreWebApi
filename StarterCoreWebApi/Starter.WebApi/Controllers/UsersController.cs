@@ -38,6 +38,7 @@ namespace Starter.WebApi.Controllers
             //business.GetValue();
             //booksRepository.Delete("strin");
             var conn = writeDbContext.Database.CanConnect();
+            var restl = userReposity.Delete("dfdfd");
             return Ok();
         }
     }

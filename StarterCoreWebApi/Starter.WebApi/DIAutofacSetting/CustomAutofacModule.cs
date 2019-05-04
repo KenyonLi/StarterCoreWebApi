@@ -30,6 +30,8 @@ namespace Starter.WebApi.DIAutofacSetting
             containerBuilder.RegisterType<A>().As<IA>().EnableInterfaceInterceptors();//aop
             //注册验证要求的处理器，可通过这种方式对同一种要求添加多种验证
             containerBuilder.RegisterType<ValidJtiHandler>().As<IAuthorizationHandler>();
+            containerBuilder.RegisterType<BooksService>().As<IBooksRepository>();
+
         }
     }
 }

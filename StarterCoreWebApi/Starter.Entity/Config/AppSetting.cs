@@ -2,7 +2,7 @@
 
 namespace Starter.Common
 {
-    public  class AppSetting
+    public class AppSetting
     {
         /// <summary>
         /// 写

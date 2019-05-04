@@ -83,6 +83,9 @@ namespace Starter.WebApi
             //启动 Swagger
             RegisterSwagger(services);
             services.AddSingleton<BooksService>();
+            var connection = Configuration["ConnectionStrings:WriteDB"];
+            services.AddDbContext<MyDbContext>(options => options.UseMySql(connection,p=>p.MigrationsAssembly("Starter.Service")));
+            
             //DI
             var containerBuilder = new ContainerBuilder();
             containerBuilder.RegisterModule<CustomAutofacModule>();
@@ -133,7 +136,10 @@ namespace Starter.WebApi
                 {
                     c.IncludeXmlComments(filePath);
                 }
-                c.OperationFilter<HttpHeaderOperation>(); // 添加httpHeader参数
+                //c.OperationFilter<HttpHeaderOperation>(); // 添加httpHeader参数
+                //c.OperationFilter<SwaggerDefaultValues>();
+                c.DescribeAllEnumsAsStrings();
+                c.DescribeStringEnumsInCamelCase();
             });
         }
         #region -注册-

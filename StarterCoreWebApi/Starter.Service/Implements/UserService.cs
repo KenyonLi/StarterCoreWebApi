@@ -3,6 +3,7 @@ using Starter.Repository;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace Starter.Service
 {
@@ -10,14 +11,18 @@ namespace Starter.Service
     {
         private IStudentRepository studentRepository;
         private WriteDbContext writeDbContext;
-        public UserService(IStudentRepository studentRepository, WriteDbContext writeDbContext)
+        private MyDbContext myDbContext;
+        public UserService(IStudentRepository studentRepository, WriteDbContext writeDbContext,MyDbContext myDbContext)
         {
             this.studentRepository = studentRepository;
             this.writeDbContext = writeDbContext;
+            this.myDbContext = myDbContext;
         }
 
         public bool Delete(string entity)
         {
+            var model = myDbContext.Users.FirstOrDefault();
+
             throw new NotImplementedException();
         }
 
