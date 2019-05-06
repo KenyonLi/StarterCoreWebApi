@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Starter.Entity.Domain;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Text;
 namespace Starter.Entity
 {
     [Table("User")]
-    public class User
+    public class User: EntityCore
     {
         ///<summary>        
         ///主键        
@@ -44,9 +45,10 @@ namespace Starter.Entity
         ///        
         ///</summary>        
         public DateTime? ModityTime { get; set; }
-        ///<summary>        
-        ///        
-        ///</summary>        
-        public DateTime? CreateTime { get; set; }
+
+        protected override void Validate()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

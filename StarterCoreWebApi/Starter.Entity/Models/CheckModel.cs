@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Starter.Entity.Domain;
+using System;
 using System.Collections.Generic;
 using System.Text;
 

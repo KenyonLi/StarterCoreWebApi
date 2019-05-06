@@ -6,21 +6,10 @@ using System.Text;
 
 namespace Starter.Service
 {
-    public class StudentService : IStudentRepository
+    public class StudentService : BaseServiceCore<Student>, IStudentRepository
     {
-        public bool Delete(string entity)
+        public StudentService(BaseDbContext context) : base(context)
         {
-            throw new NotImplementedException();
-        }
-
-        public bool Insert(Student entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Update(Student entity)
-        {
-            throw new NotImplementedException();
         }
     }
 }

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Starter.Repository
 {
-    public interface IUserActionService:IServiceCore<UserAction>
+    public interface IUserActionService: IBaseRepository<UserAction>
     {
 
         Task<ApiResult<string>> SaveAsync(UserActionModel request);

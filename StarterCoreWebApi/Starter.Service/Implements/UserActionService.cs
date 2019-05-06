@@ -13,12 +13,12 @@ using System.Threading.Tasks;
 
 namespace Starter.Service.Implements
 {
-    public partial class UserActionService : ServiceCore<UserAction>, IUserActionService
+    public partial class UserActionService : BaseServiceCore<UserAction>, IUserActionService
     {
 
         public UserActionService(
-            MyDbContext context
-            ) : base(context )
+            BaseDbContext context
+            ) : base(context)
         {
         }
 
@@ -35,7 +35,7 @@ namespace Starter.Service.Implements
                     return response;
                 }
                 DeleteForge(school);
-                var b = _unitofwork.Commit();
+                var b = Commit();
                 response.IsSuccess = b;
                 response.Message = b ? "删除成功！" : "删除失败！";
                 return response;
@@ -130,8 +130,6 @@ namespace Starter.Service.Implements
             }
         }
 
-
-
         public async Task<ApiResult<string>> SaveAsync(UserActionModel request)
         {
             ApiResult<string> response = new ApiResult<string>();
@@ -144,7 +142,7 @@ namespace Starter.Service.Implements
                     model.Parameter = request.Parameter;
                     model.Remark = request.Remark;
                     model.Name = request.Name;
-                    await _unitofwork.RegisterNewAsync(model);
+                    await AddAsync(model);
                 }
                 else
                 {
@@ -158,11 +156,11 @@ namespace Starter.Service.Implements
                     model.Parameter = request.Parameter;
                     model.Remark = request.Remark;
                     model.Name = request.Name;
-                    _unitofwork.RegisterDirty(model);
+                    Edit(model);
 
                 }
 
-                var b = await _unitofwork.CommitAsync();
+                var b = await CommitAsync();
 
                 response.IsSuccess = b;
                 response.Message = b ? "保存成功！" : "保存失败";

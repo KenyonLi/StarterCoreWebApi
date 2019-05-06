@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Starter.Repository
 {
-    public interface IBooksRepository:IRepository<Books,string>
+    public interface IBooksRepository
     {
 
     }

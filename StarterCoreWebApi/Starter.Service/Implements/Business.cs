@@ -15,7 +15,6 @@ namespace Starter.Service
 
         public void GetValue()
         {
-            userRepository.Delete("dfdfd");
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Starter.Entity.Domain;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -7,7 +8,7 @@ namespace Starter.Entity
     ///<summary>
     ///Books
     ///</summary>
-    public class Books
+    public class Books:EntityCore
     {
         ///<summary>        
         ///        
@@ -53,5 +54,10 @@ namespace Starter.Entity
         ///默认不启用        
         ///</summary>        
         public bool? IsEnable { get; set; }
+
+        protected override void Validate()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
