@@ -15,7 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Starter.DIExtension", "Star
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XUnitTestProject", "XUnitTestProject\XUnitTestProject.csproj", "{F562B209-EBC8-477B-9467-7490D6732143}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Starter.Common", "Starter.Common\Starter.Common.csproj", "{D2413484-5607-4C19-AE8F-8F9D4C9E63ED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Starter.Common", "Starter.Common\Starter.Common.csproj", "{D2413484-5607-4C19-AE8F-8F9D4C9E63ED}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{11988987-DF64-4A10-9FD6-84B94454BD61}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -54,6 +56,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3953BD8B-9873-4957-8084-EB614B4E964E} = {11988987-DF64-4A10-9FD6-84B94454BD61}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0C597997-087E-468B-BFC4-4B6CB3831E6A}

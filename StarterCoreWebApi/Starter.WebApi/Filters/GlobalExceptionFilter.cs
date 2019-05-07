@@ -8,8 +8,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Logging;
+using Starter.Entity;
 using Starter.WebApi.Exceptions;
-using Starter.WebApi.Messages;
 using System.Net;
 
 namespace Starter.WebApi.Filters
@@ -33,12 +33,12 @@ namespace Starter.WebApi.Filters
             new EventId(exception.HResult),
             exception,
             exception.Message);
-            string errorCode = "0001";
+            string errorCode = "500";
             if (exception is APIException) { errorCode = (exception as APIException).ErrorCode; }
-            var errorResp = new ResponseMessage
+            var errorResp = new ApiResult<string>
             {
                 Message = exception.Message,
-                ErrorCode = errorCode,
+                StatusCode = errorCode,
                 IsSuccess = false
             };
             var result = new JsonResult(errorResp)

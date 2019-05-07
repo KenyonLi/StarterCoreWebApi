@@ -6,8 +6,8 @@ using System.Text;
 
 namespace Starter.Entity
 {
-    [Table("User")]
-    public class User: EntityCore
+    [Table("user")]
+    public class User
     {
         ///<summary>        
         ///主键        
@@ -45,10 +45,5 @@ namespace Starter.Entity
         ///        
         ///</summary>        
         public DateTime? ModityTime { get; set; }
-
-        protected override void Validate()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

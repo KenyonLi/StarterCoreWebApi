@@ -1,10 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
 using Starter.Entity;
+using Starter.Entity.RequestModel;
+using Starter.Entity.ResponseModel;
+using Starter.Repository;
 
 namespace Starter.WebApi.Controllers
 {
@@ -12,25 +19,47 @@ namespace Starter.WebApi.Controllers
     [Route("api/account")]
     public class AccountController : Controller
     {
-        //private readonly IUserService _service;
+        private readonly IUserRepository _service;
+        private IConfiguration _configuration { get; }
 
-        //public AccountController(IUserService service)
-        //{
-        //    _service = service;
-        //}
-        //// 登录
-        //[HttpPost("login")]
-        //public async Task<ApiResult<LoginResponse>> Login([FromBody]LoginRequest request)
-        //{
-        //    var response = await _service.LoginAsync(request);
-        //    if (response.success)
-        //    {
-        //        var token = GetToken(response.data.Guid);
-        //        response.data.SignToken = token.SignToken;
-        //    }
-        //    return response;
-        //}
-        //// 登出
+        public AccountController(IUserRepository service, IConfiguration configuration)
+        {
+            _service = service;
+            _configuration = configuration;
+        }
+        // 登录
+        [HttpPost("login")]
+        public async Task<ApiResult<TokenResponse>> Login([FromBody]LoginRequest request)
+        {
+            var response = await _service.LoginAsync(request);
+            if (response.IsSuccess)
+            {
+                var claims = new[] {
+                        //加入用户的名称
+                        new Claim(ClaimTypes.Name,response.Body.profile.LoginName),
+                        new Claim(nameof(response.Body.profile.LoginName),response.Body.profile.LoginName)
+                    };
+                var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:SecurityKey"]));
+                var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+                var authTime = DateTime.UtcNow;
+                var expiresAt = authTime.AddDays(7);
+
+                var token = new JwtSecurityToken(
+                    issuer: "kenyonli.com",
+                    audience: "kenyonli.com",
+                    claims: claims,
+                    expires: expiresAt,//失效时间
+                    signingCredentials: creds);
+
+                response.Body.access_token = new JwtSecurityTokenHandler().WriteToken(token);
+                response.Body.token_type = "Bearer";
+                response.Body.profile.auth_time = new DateTimeOffset(authTime).ToUnixTimeSeconds();
+                response.Body.profile.expires_at = new DateTimeOffset(expiresAt).ToUnixTimeSeconds();
+            }
+            return response;
+        }
+        // 登出
         //[HttpPost("logout")]
         //public ApiResult<string> Logout([FromBody]LogoutReqeust reqeust)
         //{

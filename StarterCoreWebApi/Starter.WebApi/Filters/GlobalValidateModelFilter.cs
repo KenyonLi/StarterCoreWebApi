@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using Starter.WebApi.Messages;
+using Starter.Entity;
 using System.Linq;
 using System.Text;
 
@@ -43,9 +43,9 @@ namespace Starter.WebApi.Filters
                     errStr.AppendFormat("{0} |", errorMsg);
                 }
 
-                var resp = new ResponseMessage
+                var resp = new ApiResult<string>
                 {
-                    ErrorCode = "0006",
+                    StatusCode = "0006",
                     Message = errStr.ToString().TrimEnd('|'),
                     IsSuccess = false
                 };

@@ -17,7 +17,7 @@
         /// <summary>
         /// 状态码
         /// </summary>
-        public int StatusCode { get; set; }
+        public string StatusCode { get; set; }
         /// <summary>
         /// 数据集
         /// </summary>

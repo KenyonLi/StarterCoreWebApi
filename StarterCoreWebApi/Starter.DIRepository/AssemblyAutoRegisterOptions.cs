@@ -9,18 +9,15 @@ namespace Starter.DIExtension
         /// </summary>
         public string AssemblyServiceString { get; set; }
         /// <summary>
-        /// 仓储接口程序集
+        /// 写 数据库接连
         /// </summary>
-        public string AssemblyRepositoryString { get; set; }
+        public string WriteConnectionStrings { get; set; }
 
         /// <summary>
-        /// 仓储接口筛选器
+        /// 读 数据库接连
         /// </summary>
-        public Func<Type, bool> Filter { get; set; }
+        public string ReadConnectionStrings { get; set; }
 
-        public void UseTypeFilter<T>()
-        {
-            Filter = (type) => typeof(T).IsAssignableFrom(type);
-        }
+
     }
 }

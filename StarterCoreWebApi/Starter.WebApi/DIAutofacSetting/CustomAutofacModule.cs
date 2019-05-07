@@ -22,15 +22,13 @@ namespace Starter.WebApi.DIAutofacSetting
         protected override void Load(ContainerBuilder containerBuilder)
         {
             containerBuilder.Register(c=>new CustomAutofacAop());//注册aop
-            containerBuilder.RegisterType<UserService>().As<IUserRepository>();
-            containerBuilder.RegisterType<StudentService>().As<IStudentRepository>();
-            containerBuilder.Register(c => new WriteDbContext());
-            containerBuilder.RegisterType<ReadDbContext>().As<ReadDbContext>();
-            containerBuilder.RegisterType<Business>().As<Business>();
+            //containerBuilder.RegisterType<UserService>().As<IUserRepository>();
+            //containerBuilder.Register(c => new WriteDbContext());
+            //containerBuilder.RegisterType<ReadDbContext>().As<ReadDbContext>();
             containerBuilder.RegisterType<A>().As<IA>().EnableInterfaceInterceptors();//aop
             //注册验证要求的处理器，可通过这种方式对同一种要求添加多种验证
-            containerBuilder.RegisterType<ValidJtiHandler>().As<IAuthorizationHandler>();
-            containerBuilder.RegisterType<BooksService>().As<IBooksRepository>();
+            //containerBuilder.RegisterType<ValidJtiHandler>().As<IAuthorizationHandler>();
+            //containerBuilder.RegisterType<BooksService>().As<IBooksRepository>();
 
         }
     }

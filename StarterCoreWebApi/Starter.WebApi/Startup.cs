@@ -44,8 +44,6 @@ namespace Starter.WebApi
 
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
-            AppSetting.WriteDB = Configuration["ConnectionStrings:WriteDB"];
-            AppSetting.ReadDb = Configuration["ConnectionStrings:ReadDb-1"];
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                .AddJwtBearer(options =>
@@ -82,10 +80,14 @@ namespace Starter.WebApi
             .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             //启动 Swagger
             RegisterSwagger(services);
-            services.AddSingleton<BooksService>();
-            var connection = Configuration["ConnectionStrings:WriteDB"];
-            services.AddDbContext<MyDbContext>(options => options.UseMySql(connection,p=>p.MigrationsAssembly("Starter.Service")));
-            
+            //services.AddSingleton<BooksService>();
+            services.AddRepositoryFromAssembly(options =>
+            {
+                options.AssemblyServiceString = "Starter.Service";
+                options.WriteConnectionStrings = Configuration["ConnectionStrings:WriteDB"];
+                options.ReadConnectionStrings = Configuration["ConnectionStrings:ReadDb-1"];
+            });
+
             //DI
             var containerBuilder = new ContainerBuilder();
             containerBuilder.RegisterModule<CustomAutofacModule>();
@@ -144,13 +146,7 @@ namespace Starter.WebApi
         }
         #region -注册-
 
-        private void RegisterRepository(IServiceCollection services)
-        {
-            services.AddRepositoryFromAssembly(options =>
-           {
-               options.AssemblyRepositoryString = "Starter.Repository";
-           });
-        }
+      
         private void RegisterService(IServiceCollection services)
         {
             var assembly = Assembly.Load("Starter.Service");
@@ -190,11 +186,6 @@ namespace Starter.WebApi
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", SERVICE_NAME);
             });
-        }
-        public void Reig()
-        {
-            var assemblyWeb = Assembly.GetExecutingAssembly();
-            // 自动注入    AutoInjection(services, assemblyApplication);
         }
     }
 }

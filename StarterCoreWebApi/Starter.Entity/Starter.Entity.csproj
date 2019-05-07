@@ -10,9 +10,4 @@
     </Reference>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="RequestModel\" />
-    <Folder Include="ResponseModel\" />
-  </ItemGroup>
-
 </Project>

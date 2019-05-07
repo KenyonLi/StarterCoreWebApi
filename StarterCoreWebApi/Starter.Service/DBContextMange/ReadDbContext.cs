@@ -1,19 +1,17 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Starter.Common;
 using Starter.Entity;
+using Starter.Service.DBContextMange;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Starter.Service
 {
-    /// <summary>
-    /// 写
-    /// </summary>
-    public class WriteDbContext : DbContext
+    public class ReadDbContext : DbContext
     {
-        public WriteDbContext(DbContextOptions<WriteDbContext> options) : base(options)
+        public ReadDbContext(DbContextOptions<ReadDbContext> options) : base(options)
         {
+
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -26,10 +24,10 @@ namespace Starter.Service
             //modelBuilder.Entity<UserAction>().ToTable("UserActions").Property(p => p.RowVersion).IsRowVersion();
             //modelBuilder.Entity<UserMenuOrActionInRole>().ToTable("UserMenuOrActionInRoles").Property(p => p.RowVersion).IsRowVersion();
             //modelBuilder.Entity<UserInRoleGroup>().ToTable("UserInRoleGroups").Property(p => p.RowVersion).IsRowVersion();
-            //modelBuilder.Entity<User>().ToTable("User").Property(p => p.Id).IsRowVersion();
+            //modelBuilder.Entity<Department>().ToTable("Departments").Property(p => p.RowVersion).IsRowVersion();
             #endregion
         }
-
         public DbSet<User> Users { get; set; }
+
     }
 }

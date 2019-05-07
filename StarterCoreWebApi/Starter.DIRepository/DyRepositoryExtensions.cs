@@ -1,5 +1,10 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using Starter.DIExtension;
+using Starter.Repository;
+using Starter.Repository.Infrastructure;
+using Starter.Service;
+using Starter.Service.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,26 +24,13 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <returns></returns>
         public static IServiceCollection AddRepositoryFromAssembly(this IServiceCollection builder, Action<AssemblyAutoRegisterOptions> setupOptions)
         {
-            var options = new AssemblyAutoRegisterOptions
-            {
-                Filter = (type) => type.IsInterface
-            };
-            setupOptions(options);
-            var assembly = Assembly.Load(options.AssemblyRepositoryString);
-            var assembly2 = Assembly.Load("Starter.Service");
-            var allTypes = assembly.GetTypes().Where(options.Filter);
-            foreach (var t in allTypes)
-            {
-                //if (!t.Name.EndsWith("IRepository`2"))//过滤泛型接口
-                //    //builder.AddSingleton(t, sp =>
-                //    //{
-                //    //    ScopeTemplateParser templateParser = new ScopeTemplateParser();
-                //    //    var scope = templateParser.Parse(t.Name);
-                //    //    var type = assembly2.GetType($"Starter.Service.{scope}Service");
-                //    //    return type;
-                //    //});
+            var regiOptions = new AssemblyAutoRegisterOptions();
+            setupOptions(regiOptions);
+            builder.AddDbContext<WriteDbContext>(options => options.UseMySql(regiOptions.WriteConnectionStrings, p => p.MigrationsAssembly(regiOptions.AssemblyServiceString)));
+            builder.AddDbContext<ReadDbContext>(options => options.UseMySql(regiOptions.ReadConnectionStrings, p => p.MigrationsAssembly(regiOptions.AssemblyServiceString)));
 
-            }
+            builder.AddSingleton<IUnitOfWork, UnitOfWork>();
+            builder.AddSingleton<IUserRepository, UserService>();
             return builder;
         }
 
